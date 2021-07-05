@@ -12,8 +12,75 @@
     <title>Weather app</title>
   </head>
   <body>
-    <div id="content">
-      <h1>hello world</h1>
+    <div id="content" class="flex-center align-start">
+      <div class="overlay"></div>
+      <div class="app-wrapper flex-center flex-column">
+        <div class="header-wrapper flex-between w-10">
+          <div class="city-infos flex-column">
+            <h1>London, UK</h1>
+            <h4 class="m-0">Monday 29 August</h4>
+          </div>
+          <div class="input-wrapper">
+            <form>
+              <input type="text" text="" placeholder="Search" />
+              <button type="submit">
+                <i class="bi bi-arrow-right-circle arrow-icon"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="main-weather-info-wrapper flex-center w-10">
+          <div class="temp-area flex-center">
+            <div class="icon-weather-wrapper">
+              <i class="bi bi-cloud-sun"></i>
+            </div>
+            <div class="temps-details">
+              <div class="temp">
+                <h1>
+                  21
+                  <div class="degree-circle"></div>
+                </h1>
+              </div>
+              <div class="description">Mostly sunny</div>
+              <div class="unity-toggler-btns flex-center">
+                <a href="#">F</a>
+              </div>
+            </div>
+          </div>
+          <div class="weather-stats-details">
+            <div class="stat-item">
+              <h2>
+                23
+                <div class="degree-circle"></div>
+              </h2>
+              <span>High</span>
+            </div>
+            <div class="stat-item">
+              <h2>7mph</h2>
+              <span>Wind</span>
+            </div>
+            <div class="stat-item">
+              <h2>Sunrise</h2>
+              <span>Wind</span>
+            </div>
+            <div class="stat-item">
+              <h2>
+                14
+                <div class="degree-circle"></div>
+              </h2>
+              <span>Low</span>
+            </div>
+            <div class="stat-item">
+              <h2>0%</h2>
+              <span>Rain</span>
+            </div>
+            <div class="stat-item">
+              <h2>20:57</h2>
+              <span>Sunset</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./main.js"></script>
   </body>
