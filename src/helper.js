@@ -1,3 +1,5 @@
+import render from './dom';
+
 const icons = [
   {
     description: 'thunderstorm',
@@ -31,27 +33,31 @@ const icons = [
   },
 ];
 
-export function getIcon(description) {
+export function getIcon(desc) {
   const myIcon = icons.filter(
-    (item) => item.description === description.toLowerCase()
+    (item) => item.description === desc.toLowerCase()
   );
-  return myIcon;
+  return myIcon[0];
 }
 
-async function getData(location) {
+async function getData(location = 'Kigali') {
   const apiKey = 'e89012cc28912f22e32bfd3770ad7140';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${apiKey}`;
+  const defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kigali&units=metric&APPID=${apiKey}`;
   const response = await fetch(url, { mode: 'cors' });
+  const defaultData = await fetch(defaultUrl, { mode: 'cors' });
   let data;
   try {
     data = await response.json();
   } catch (error) {
-    data = false;
+    render.showError();
+    data = await defaultData.json();
   }
   return data;
 }
+
 export default async function getWeather(location) {
   const data = await getData(location);
   const icon = getIcon(data.weather[0].main);
-  console.log(icon);
+  render.renderWeatherInfo({ data, icon });
 }
