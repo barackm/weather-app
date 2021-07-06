@@ -1,3 +1,4 @@
+let Faraneight = true;
 const render = (function () {
   function renderWeatherInfo(weatherData) {
     const { data, icon } = weatherData;
@@ -68,13 +69,13 @@ const render = (function () {
     iconWrapper.innerHTML = `${icon.icon}`;
     tempDetails.innerHTML = `<div class="temp">
     <h1>
-      ${data.main.temp}
+      ${Faraneight ? ((data.main.temp * (9 / 5)) + 32).toFixed(2) : data.main.temp}
       <div class="degree-circle"></div>
     </h1>
   </div>
   <div class="description">${data.weather[0].description}</div>
   <div class="unity-toggler-btns flex-center">
-    <a href="#">C</a>
+    <a href="#">${Faraneight ? 'F' : 'C'}</a>
   </div>`;
     form.appendChild(inputText);
     form.appendChild(submitBtn);
@@ -87,6 +88,13 @@ const render = (function () {
     weatherInfoWrapper.appendChild(weatherStats);
     appContainer.appendChild(header);
     appContainer.appendChild(weatherInfoWrapper);
+
+    const unityToggler = document.querySelector('.unity-toggler-btns');
+    unityToggler.addEventListener('click', (e) => {
+      e.preventDefault();
+      Faraneight = !Faraneight;
+      renderWeatherInfo(weatherData);
+    });
   }
 
   function showError(ex) {
