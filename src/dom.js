@@ -1,4 +1,4 @@
-let Faraneight = true;
+let Faraneight = false;
 const render = (function () {
   function renderWeatherInfo(weatherData) {
     const { data, icon } = weatherData;

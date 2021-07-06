@@ -35,12 +35,12 @@ const icons = [
 
 export function getIcon(desc) {
   const myIcon = icons.filter(
-    (item) => item.description === desc.toLowerCase()
+    (item) => item.description === desc.toLowerCase(),
   );
   return myIcon[0];
 }
 
-async function getData(location = 'Kigali') {
+async function getData(location) {
   const apiKey = 'e89012cc28912f22e32bfd3770ad7140';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${apiKey}`;
   const defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kigali&units=metric&APPID=${apiKey}`;
