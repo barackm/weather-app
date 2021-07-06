@@ -44,20 +44,27 @@ async function getData(location = 'Kigali') {
   const apiKey = 'e89012cc28912f22e32bfd3770ad7140';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${apiKey}`;
   const defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kigali&units=metric&APPID=${apiKey}`;
-  const response = await fetch(url, { mode: 'cors' });
-  const defaultData = await fetch(defaultUrl, { mode: 'cors' });
   let data;
-  try {
-    data = await response.json();
-  } catch (error) {
-    render.showError();
-    data = await defaultData.json();
-  }
+
+  const defaultData = await fetch(defaultUrl, { mode: 'cors' });
+
+  await fetch(url, { mode: 'cors' })
+    .then((res) => {
+      data = res.json();
+    })
+    .catch(async (ex) => {
+      render.showError(ex);
+      data = await defaultData.json();
+    });
+
   return data;
 }
 
 export default async function getWeather(location) {
   const data = await getData(location);
+  if (data.cod === '404') {
+    return render.showError(data);
+  }
   const icon = getIcon(data.weather[0].main);
-  render.renderWeatherInfo({ data, icon });
+  return render.renderWeatherInfo({ data, icon });
 }

@@ -4,6 +4,7 @@ const render = (function () {
     const mainContainer = document.getElementById('content');
     const header = document.createElement('div');
     const appContainer = document.querySelector('.app-wrapper');
+    appContainer.innerHTML = '';
     const cityInfo = document.createElement('div');
     const inputWrapper = document.createElement('div');
     const form = document.createElement('form');
@@ -61,7 +62,9 @@ const render = (function () {
 
     inputText.setAttribute('type', 'text');
     inputText.setAttribute('placeholder', 'Search City...');
+    inputText.classList += 'city-input';
     submitBtn.setAttribute('type', 'submit');
+    form.setAttribute('id', 'my-form');
     iconWrapper.innerHTML = `${icon.icon}`;
     tempDetails.innerHTML = `<div class="temp">
     <h1>
@@ -86,8 +89,13 @@ const render = (function () {
     appContainer.appendChild(weatherInfoWrapper);
   }
 
-  function showError() {
-    console.log('There was an error');
+  function showError(ex) {
+    const errorContainer = document.createElement('div');
+    const appContainer = document.querySelector('.app-wrapper');
+    console.log(ex);
+    errorContainer.classList += 'error-message-container flex-center text-center';
+    errorContainer.innerHTML = `<p>${ex.message}</p>`;
+    appContainer.appendChild(errorContainer);
   }
   return {
     renderWeatherInfo,

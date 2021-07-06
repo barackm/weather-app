@@ -222,16 +222,14 @@ a {
   font-weight: lighter;
   display: inline-block;
   position: relative;
+  display: flex;
 }
 
 .stat-item h2 .degree-circle {
-  position: absolute;
   width: 0.5rem;
   height: 0.5rem;
   border: 2px solid #fff;
   border-radius: 50%;
-  left: 2.5rem;
-  top: 0.5rem;
 }
 
 .unity-toggler-btns {
@@ -254,4 +252,18 @@ a {
 
 .unity-toggler-btns a:hover {
   background-color: rgba(255, 255, 255, 0.267);
+}
+
+.error-message-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  background-color: var(--white);
+}
+
+.error-message-container p {
+  color: black;
+  text-transform: capitalize;
 }
