@@ -316,6 +316,10 @@ button {
 }
 
 @media screen and (max-width: 480px) {
+  .app-wrapper {
+    padding-top: 1.5rem;
+    width: 100%;
+  }
   .temp-area {
     flex-direction: column;
     padding: 0;
@@ -327,6 +331,7 @@ button {
 
   .main-weather-info-wrapper {
     padding-top: 2rem;
+    padding-top: 0;
   }
 
   .icon-weather-wrapper {
@@ -348,6 +353,8 @@ button {
 
   .degree-circle {
     position: initial !important;
+    width: 0.7rem !important;
+    height: 0.7rem !important;
   }
 
   .unity-toggler-btns {
@@ -357,5 +364,9 @@ button {
 
   .unity-toggler-btns a {
     font-size: 2rem;
+  }
+
+  .stat-item h1 {
+    font-size: 1.5rem !important;
   }
 }
