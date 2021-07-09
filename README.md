@@ -2,7 +2,7 @@
 
 # Weather App
 
-> The Weather App project comes at the end of the Asynchronous Javascript and APIs section of the Javascript course. It's a website that helps you know the weather conditions arround the world.
+> The Weather App project comes at the end of the Asynchronous Javascript and APIs section of the Javascript course. It's a website that helps you know the weather conditions around the world.
 
 ![screenshot](./screenshot1.png)
 ![screenshot](./screenshot2.png)
