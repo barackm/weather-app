@@ -319,6 +319,7 @@ button {
   .app-wrapper {
     padding-top: 1.5rem;
     width: 100%;
+    padding-bottom: 2rem;
   }
   .temp-area {
     flex-direction: column;
@@ -343,11 +344,11 @@ button {
   }
 
   .icon-weather-wrapper i {
-    font-size: 8rem;
+    font-size: 7rem;
   }
 
   .temps-details .temp h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     display: flex;
   }
 
@@ -366,7 +367,7 @@ button {
     font-size: 2rem;
   }
 
-  .stat-item h1 {
+  .stat-item h2 {
     font-size: 1.5rem !important;
   }
 }
