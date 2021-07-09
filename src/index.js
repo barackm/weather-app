@@ -1,7 +1,8 @@
-import getWeather from './helper';
+import helper from './helper';
+import '../dist/main.css';
 
 const lastCity = localStorage.getItem('weather-city');
-getWeather(lastCity || 'Kigali');
+helper.getWeather(lastCity || 'Kigali');
 
 const form = document.getElementById('content');
 
@@ -10,6 +11,6 @@ if (form) {
     e.preventDefault();
     const query = document.querySelector('.city-input');
     localStorage.setItem('weather-city', query.value);
-    getWeather(localStorage.getItem('weather-city'));
+    helper.getWeather(localStorage.getItem('weather-city'));
   });
 }

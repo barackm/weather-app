@@ -1,7 +1,7 @@
 let Faraneight = false;
-const render = (function () {
-  function renderWeatherInfo(weatherData) {
-    const { data, icon } = weatherData;
+const render = (() => {
+  const renderWeatherInfo = (weatherData) => {
+    const { data, icon, getCurrentDate } = weatherData;
     const mainContainer = document.getElementById('content');
     const header = document.createElement('div');
     const appContainer = document.querySelector('.app-wrapper');
@@ -20,14 +20,15 @@ const render = (function () {
     console.log(data);
     mainContainer.style.backgroundImage = `url(${icon.img})`;
     header.classList += 'header-wrapper flex-between w-10';
-    weatherInfoWrapper.classList += 'main-weather-info-wrapper flex-center w-10';
+    weatherInfoWrapper.classList
+      += 'main-weather-info-wrapper flex-center w-10';
     cityInfo.classList += 'city-infos flex-column';
     tempDetails.classList += 'temps-details';
     iconWrapper.classList += 'icon-weather-wrapper';
     weatherStats.classList += 'weather-stats-details';
     tempWrapper.classList += 'temp-area flex-center';
     cityInfo.innerHTML = `<h1>${data.name}</h1>
-    <h4 class="m-0">Monday 29 August</h4>`;
+    <h4 class="m-0">${getCurrentDate()}</h4>`;
     submitBtn.innerHTML = '<i class="bi bi-arrow-right-circle arrow-icon"></i>';
     inputWrapper.classList += 'input-wrapper';
     weatherStats.innerHTML = `<div class="stat-item">
@@ -38,11 +39,11 @@ const render = (function () {
     <span>High</span>
   </div>
   <div class="stat-item">
-    <h2>${data.wind.speed}mph</h2>
+    <h2 class='text-center'>${data.wind.speed}<span class='unity-measure'>mph</span></h2>
     <span>Wind</span>
   </div>
   <div class="stat-item">
-    <h2>${data.weather[0].description}</h2>
+    <h2>${data.wind.deg}</h2>
     <span>Wind</span>
   </div>
   <div class="stat-item">
@@ -53,12 +54,12 @@ const render = (function () {
     <span>Low</span>
   </div>
   <div class="stat-item">
-    <h2>0%</h2>
-    <span>Rain</span>
+    <h2>${data.main.pressure}</h2>
+    <span>Pressure</span>
   </div>
   <div class="stat-item">
-    <h2>20:57</h2>
-    <span>Sunset</span>
+    <h2>${data.main.humidity}%</h2>
+    <span>Humidity</span>
   </div>`;
 
     inputText.setAttribute('type', 'text');
@@ -69,7 +70,9 @@ const render = (function () {
     iconWrapper.innerHTML = `${icon.icon}`;
     tempDetails.innerHTML = `<div class="temp">
     <h1>
-      ${Faraneight ? ((data.main.temp * (9 / 5)) + 32).toFixed(2) : data.main.temp}
+      ${
+  Faraneight ? (data.main.temp * (9 / 5) + 32).toFixed(2) : data.main.temp
+  }
       <div class="degree-circle"></div>
     </h1>
   </div>
@@ -95,20 +98,20 @@ const render = (function () {
       Faraneight = !Faraneight;
       renderWeatherInfo(weatherData);
     });
-  }
+  };
 
-  function showError(ex) {
+  const showError = (ex) => {
     const errorContainer = document.createElement('div');
     const appContainer = document.querySelector('.app-wrapper');
-    console.log(ex);
-    errorContainer.classList += 'error-message-container flex-center text-center';
+    errorContainer.classList
+      += 'error-message-container flex-center text-center';
     errorContainer.innerHTML = `<p>${ex.message}</p>`;
     appContainer.appendChild(errorContainer);
-  }
+  };
   return {
     renderWeatherInfo,
     showError,
   };
-}());
+})();
 
 export default render;

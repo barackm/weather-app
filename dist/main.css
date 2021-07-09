@@ -87,6 +87,10 @@ a {
   align-items: center;
 }
 
+button {
+  border: none;
+}
+
 #content {
   min-height: 100vh;
   width: 100%;
@@ -266,4 +270,92 @@ a {
 .error-message-container p {
   color: black;
   text-transform: capitalize;
+}
+
+.unity-measure {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-weather-info-wrapper {
+    flex-direction: column;
+    padding-top: 6rem;
+  }
+  .temp-area {
+    border: none;
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .city-infos {
+    width: 100%;
+    text-align: center;
+  }
+
+  .input-wrapper {
+    margin-top: 2rem;
+  }
+
+  .temps-details .temp h1 {
+    font-size: 7rem;
+  }
+
+  .degree-circle {
+    right: -2rem !important;
+  }
+
+  .unity-toggler-btns {
+    right: -3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .temp-area {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .city-infos h1 {
+    font-size: 2rem;
+  }
+
+  .main-weather-info-wrapper {
+    padding-top: 2rem;
+  }
+
+  .icon-weather-wrapper {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon-weather-wrapper i {
+    font-size: 8rem;
+  }
+
+  .temps-details .temp h1 {
+    font-size: 4rem;
+    display: flex;
+  }
+
+  .degree-circle {
+    position: initial !important;
+  }
+
+  .unity-toggler-btns {
+    top: 2rem;
+    right: -2rem;
+  }
+
+  .unity-toggler-btns a {
+    font-size: 2rem;
+  }
 }
