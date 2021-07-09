@@ -17,7 +17,6 @@ const render = (() => {
     const tempDetails = document.createElement('div');
     const weatherStats = document.createElement('div');
 
-    console.log(data);
     mainContainer.style.backgroundImage = `url(${icon.img})`;
     header.classList += 'header-wrapper flex-between w-10';
     weatherInfoWrapper.classList
